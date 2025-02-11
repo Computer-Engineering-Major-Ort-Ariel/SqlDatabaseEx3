@@ -2,11 +2,37 @@
 <html>
 
 <head>
-  <title>Index Page</title>
+  <link rel="stylesheet" href="main.css">
+  <title>Byte</title>
 </head>
 
 <body>
-  <h1>The main page of the website</h1>
+  <div class="pageContent">
+    <div class="container">
+      <h1 class="heading">Byte</h1>
+      <div class="transactionsRow">
+        <div>
+          <h2>Sign Up</h2>
+          <div>Username</div> <input id="sUsernameInput">
+          <div>Password</div> <input type="password" id="sPasswordInput">
+          <div>Confirm Password</div> <input type="password" id="sConfirmInput">
+          <br>
+          <br>
+          <button id="signUpButton">Sign Up</button>
+        </div>
+        <div>
+          <h2>Log In</h2>
+          <div>Username</div> <input id="lUsernameInput">
+          <div>Password</div> <input type="password" id="lPasswordInput">
+          <br>
+          <br>
+          <button id="logInButton">Log In</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="index.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,208 @@
+@font-face {
+  font-family: "roboto";
+  src: url("/website/fonts/Roboto-VariableFont_wdth\,wght.ttf");
+}
+
+@font-face {
+  font-family: "pacifico";
+  src: url("/website/fonts/Pacifico-Regular.ttf");
+}
+
+* {
+  font-family: "roboto";
+  font-weight: 500;
+}
+
+body {
+  background-image: linear-gradient(#428b9c, #027788);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+
+  background-color: #28a53d;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#logOutButton {
+  background-color: #566d81;
+  border-width: 0;
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.2);
+  color: white;
+}
+
+#requestButton {
+  background-color: #28a53d;
+}
+
+#transferButton {
+  background-color: #c21034;
+}
+
+#requestImg {
+  transform: rotateZ(0.5turn);
+}
+
+.pageContent {
+  padding: 8px;
+  height: calc(100% - 20px);
+
+  color: white;
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.statusDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.heading {
+  font-family: "pacifico";
+  font-size: 45px;
+  margin-bottom: 20px;
+
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.buttonsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 70px;
+  margin-bottom: 20px;
+}
+
+.activityButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 12px;
+  border-width: 0;
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.transactionsRow {
+  width: 100%;
+  max-width: 800px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 2vw;
+}
+
+.transactionsTitle {
+  padding-bottom: 10px;
+}
+
+.transactionsBox {
+  width: 100%;
+  background-image: linear-gradient(#0e6779, #1c5c7f);
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.request {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #02778888;
+  margin-bottom: 5px;
+}
+
+.itemsRow {
+  padding: 0 0px 10px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reason {
+  padding-left: 2px;
+  font-size: 12px;
+  color: #9ea1a3;
+}
+
+.approvalButtons {
+  gap: 30px;
+  /* background-color: #027788; */
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-around; */
+}
+
+.approvalButton {
+  background-color: #027788;
+  padding: 3px 0 3px 0;
+  color: #eee;
+  border-radius: 5px;
+  border-width: 0;
+  width: 80px;
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* .approveButton {
+  background-color: #28a53d;
+}
+
+.rejectButton {
+  background-color: #c21034;
+} */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.modalContent {
+  background-color: white;
+  height: min-content;
+  border-radius: 10px;
+  padding: 10px 50px 40px 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-image: linear-gradient(#d1e4e9, #b7e0e5);
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.transactionInput {
+  width: 116px;
+  text-align: center;
+}
+
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
