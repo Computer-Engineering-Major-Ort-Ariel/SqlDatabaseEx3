@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="main.css">
+  <title>Byte</title>
+</head>
+
+<body>
+  <div class="pageContent">
+
+    <div class="statusDiv">
+      <div id="nameDiv"></div>
+      <button id="logOutButton">Log Out</button>
+    </div>
+
+    <div class="container">
+      <h1 class="heading">Byte</h1>
+      <div class="buttonsRow">
+        <div class="center">
+          <button id="requestButton" class="activityButton">
+            <img id="requestImg" src="/website/images/send-white-icon.png">
+          </button>
+          <div>Request</div>
+        </div>
+        <div class="center">
+          <button id="transferButton" class="activityButton">
+            <img src="/website/images/send-white-icon.png">
+          </button>
+          <div>Transfer</div>
+        </div>
+      </div>
+
+      <div class="transactionsRow">
+        <div class="transactionsBox">
+          <div class="transactionsTitle">Inbox:</div>
+        </div>
+        <div class="transactionsBox">
+
+          <div class="transactionsTitle">History:</div>
+          <div id="historyDiv"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal">
+    <div class="modalContent">
+      <h2>Request</h2>
+      <div>
+        <input class="transactionInput"> ₪ from
+        <select class="recipient">
+          <option value="" disabled selected>Select a recipient</option>
+        </select>
+      </div>
+      <div>for <input class="reasonInput"></div>
+      <br>
+      <button id="rSendButton" class="sendButton">Send</button>
+    </div>
+  </div>
+
+  <div class="modal">
+    <div class="modalContent">
+      <h2>Transfer</h2>
+      <div>
+        <input class="transactionInput"> ₪ to
+        <select class="recipient">
+          <option value="" disabled selected>Select a recipient</option>
+        </select>
+      </div>
+      <div>for <input class="reasonInput"></div>
+      <br>
+      <button id="tSendButton" class="sendButton">Send</button>
+    </div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>
