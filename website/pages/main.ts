@@ -99,6 +99,8 @@ for (let i = 0; i < selects.length; i++) {
 
 let inbox = await send("getInbox", userId) as Transaction[];
 
+console.log(inbox);
+
 for (let i = 0; i < inbox.length; i++) {
   let transaction = inbox[i];
 
