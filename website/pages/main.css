@@ -48,7 +48,19 @@ img {
   background-color: #c21034;
 }
 
-#requestImg {
+.tImg {
+  padding: 2px;
+  height: 14px;
+  transform: translateY(5px);
+}
+
+.rImg {
+  padding: 3px;
+  height: 14px;
+  transform: translateY(5px) rotateZ(0.5turn);
+}
+
+.requestImg {
   transform: rotateZ(0.5turn);
 }
 
@@ -199,7 +211,6 @@ img {
   width: 116px;
   text-align: center;
 }
-
 
 .center {
   display: flex;
