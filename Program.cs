@@ -80,56 +80,21 @@ class Program
           }
           else if (request.Path == "getContacts")
           {
-            var userId = request.GetBody<string>();
-
-            var contacts = database.Users.Where(user => user.Id != userId);
-
-            response.Send(contacts);
           }
           else if (request.Path == "transfer")
           {
-            var (senderId, recipientId, amount, reason) = request.GetBody<(string, string, double, string)>();
-
-            Transfer transfer = new Transfer(senderId, recipientId, amount, reason);
-
-            database.Transfers.Add(transfer);
           }
           else if (request.Path == "getInbox")
           {
-            var userId = request.GetBody<string>();
-
-            var inbox = database.Transfers
-              .Where(transfer => transfer.RecipientId == userId && transfer.Status == 0)
-              .ToArray();
-
-            response.Send(inbox);
           }
           else if (request.Path == "getHistory")
           {
-            var userId = request.GetBody<string>();
-
-            var history = database.Transfers
-              .Where(transfer => 
-                (transfer.RecipientId == userId || transfer.SenderId == userId)
-                && transfer.Status != 0
-              )
-              .ToArray();
-
-            response.Send(history);
           }
           else if (request.Path == "approve")
           {
-            var requestId = request.GetBody<int>();
-
-            var req = database.Transfers.Find(requestId)!;
-            req.Status = 1;
           }
           else if (request.Path == "reject")
           {
-            var requestId = request.GetBody<int>();
-
-            var req = database.Transfers.Find(requestId)!;
-            req.Status = 2;
           }
           else
           {
