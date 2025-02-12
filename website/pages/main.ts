@@ -12,7 +12,6 @@ let transactionInputs = document.querySelectorAll(".transactionInput") as NodeLi
 let selects = document.querySelectorAll(".recipient") as NodeListOf<HTMLSelectElement>;
 let reasonInputs = document.querySelectorAll(".reasonInput") as NodeListOf<HTMLInputElement>;
 let sendButtons = document.querySelectorAll(".sendButton") as NodeListOf<HTMLButtonElement>;
-let [requestModal, transferModal] = modals;
 
 logOutButton.onclick = function () {
   localStorage.removeItem("userId");
@@ -79,9 +78,6 @@ if (userId == null) {
 
 
 let contacts = await send("getContacts", userId) as User[];
-
-console.log(contacts);
-
 
 for (let i = 0; i < selects.length; i++) {
   let select = selects[i];
@@ -182,6 +178,16 @@ for (let i = 0; i < history.length; i++) {
   let amountDiv = document.createElement("div");
   amountDiv.innerText = transaction.Amount.toString() + "₪";
   itemsDiv.appendChild(amountDiv);
+
+  let tImg = document.createElement("img");
+  tImg.src = "/website/images/send-white-icon.png";
+  if (transaction.Sender.Id == userId) {
+    tImg.classList.add("tImg");
+  }
+  else {
+    tImg.classList.add("rImg");
+  }
+  amountDiv.appendChild(tImg);
 
   let statusDiv = document.createElement("div");
   statusDiv.classList.add("approvalButtons");
