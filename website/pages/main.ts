@@ -166,9 +166,14 @@ for (let i = 0; i < history.length; i++) {
   let leftDiv = document.createElement("div");
   itemsDiv.appendChild(leftDiv);
 
-  let recipientDiv = document.createElement("div");
-  recipientDiv.innerText = transaction.Sender.Username;
-  leftDiv.appendChild(recipientDiv);
+  let nameDiv = document.createElement("div");
+  if (transaction.Sender.Id == userId) {
+    nameDiv.innerText = "To " + transaction.Recipient.Username;
+  }
+  else {
+    nameDiv.innerText = "From " + transaction.Sender.Username;
+  }
+  leftDiv.appendChild(nameDiv);
 
   let reasonDiv = document.createElement("div");
   reasonDiv.classList.add("reason");

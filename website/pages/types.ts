@@ -6,6 +6,7 @@ export type User = {
 export type Transaction = {
   Id: number,
   Sender: User,
+  Recipient: User,
   Reason: string,
   Amount: number,
   Status: number,
