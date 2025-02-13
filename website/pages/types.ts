@@ -10,4 +10,5 @@ export type Transaction = {
   Reason: string,
   Amount: number,
   Status: number,
+  IsTransfer: boolean,
 }

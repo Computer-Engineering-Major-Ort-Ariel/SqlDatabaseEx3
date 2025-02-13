@@ -53,13 +53,9 @@ for (let i = 0; i < modals.length; i++) {
 
     let reason = reasonInput.value;
 
-    if (i == 0) {
-      amount *= -1;
-    }
+    let isTransfer = i == 1;
 
-    let toMe = i == 1;
-
-    await send("transfer", [userId, recipientId, amount, reason, toMe]);
+    await send("transfer", [userId, recipientId, amount, reason, isTransfer]);
 
     modal.style.opacity = "0";
     modal.style.pointerEvents = "none";
@@ -114,7 +110,12 @@ for (let i = 0; i < inbox.length; i++) {
   itemsDiv.appendChild(leftDiv);
 
   let recipientDiv = document.createElement("div");
-  recipientDiv.innerText = transaction.Sender.Username;
+  if (transaction.IsTransfer) {
+    recipientDiv.innerText = "From " + transaction.Sender.Username;
+  }
+  else {
+    recipientDiv.innerText = "To " + transaction.Sender.Username;
+  }
   leftDiv.appendChild(recipientDiv);
 
   let reasonDiv = document.createElement("div");
@@ -157,6 +158,9 @@ console.log("history", history);
 for (let i = 0; i < history.length; i++) {
   let transaction = history[i];
 
+  let imRecipient = transaction.Recipient.Id == userId;
+  let isTransfer = transaction.IsTransfer;
+
   let transactionDiv = document.createElement("div");
   transactionDiv.classList.add("request");
   historyDiv.appendChild(transactionDiv);
@@ -169,11 +173,11 @@ for (let i = 0; i < history.length; i++) {
   itemsDiv.appendChild(leftDiv);
 
   let nameDiv = document.createElement("div");
-  if (transaction.Sender.Id == userId) {
-    nameDiv.innerText = "To " + transaction.Recipient.Username;
+  if (imRecipient) {
+    nameDiv.innerText = transaction.Sender.Username;
   }
   else {
-    nameDiv.innerText = "From " + transaction.Sender.Username;
+    nameDiv.innerText = transaction.Recipient.Username;
   }
   leftDiv.appendChild(nameDiv);
 
@@ -186,13 +190,14 @@ for (let i = 0; i < history.length; i++) {
   amountDiv.innerText = transaction.Amount.toString() + "₪";
   itemsDiv.appendChild(amountDiv);
 
+
   let tImg = document.createElement("img");
   tImg.src = "/website/images/send-white-icon.png";
-  if (transaction.Sender.Id == userId) {
-    tImg.classList.add("tImg");
+  if (imRecipient == isTransfer) {
+    tImg.classList.add("transferImg");
   }
   else {
-    tImg.classList.add("rImg");
+    tImg.classList.add("requestImg");
   }
   amountDiv.appendChild(tImg);
 
