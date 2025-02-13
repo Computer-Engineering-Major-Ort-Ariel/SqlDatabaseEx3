@@ -48,13 +48,13 @@ img {
   background-color: #c21034;
 }
 
-.requestImg {
+.transferImg {
   padding: 3px;
   height: 14px;
   transform: translateY(5px);
 }
 
-.transferImg {
+.requestImg {
   padding: 3px;
   height: 14px;
   transform: translateY(5px) rotateZ(0.5turn);

@@ -110,12 +110,7 @@ for (let i = 0; i < inbox.length; i++) {
   itemsDiv.appendChild(leftDiv);
 
   let recipientDiv = document.createElement("div");
-  if (transaction.IsTransfer) {
-    recipientDiv.innerText = "From " + transaction.Sender.Username;
-  }
-  else {
-    recipientDiv.innerText = "To " + transaction.Sender.Username;
-  }
+  recipientDiv.innerText = transaction.Sender.Username;
   leftDiv.appendChild(recipientDiv);
 
   let reasonDiv = document.createElement("div");
@@ -126,6 +121,16 @@ for (let i = 0; i < inbox.length; i++) {
   let amountDiv = document.createElement("div");
   amountDiv.innerText = transaction.Amount.toString() + "₪";
   itemsDiv.appendChild(amountDiv);
+
+  let tImg = document.createElement("img");
+  tImg.src = "/website/images/send-white-icon.png";
+  if (transaction.IsTransfer) {
+    tImg.classList.add("requestImg");
+  }
+  else {
+    tImg.classList.add("transferImg");
+  }
+  amountDiv.appendChild(tImg);
 
   let aButtonsDiv = document.createElement("div");
   aButtonsDiv.classList.add("approvalButtons");
@@ -158,9 +163,6 @@ console.log("history", history);
 for (let i = 0; i < history.length; i++) {
   let transaction = history[i];
 
-  let imRecipient = transaction.Recipient.Id == userId;
-  let isTransfer = transaction.IsTransfer;
-
   let transactionDiv = document.createElement("div");
   transactionDiv.classList.add("request");
   historyDiv.appendChild(transactionDiv);
@@ -173,7 +175,12 @@ for (let i = 0; i < history.length; i++) {
   itemsDiv.appendChild(leftDiv);
 
   let nameDiv = document.createElement("div");
-  nameDiv.innerText = transaction.Sender.Username;
+  if (transaction.Recipient.Id == userId) {
+    nameDiv.innerText = transaction.Sender.Username;
+  }
+  else {
+    nameDiv.innerText = transaction.Recipient.Username;
+  }
   leftDiv.appendChild(nameDiv);
 
   let reasonDiv = document.createElement("div");
@@ -185,21 +192,23 @@ for (let i = 0; i < history.length; i++) {
   amountDiv.innerText = transaction.Amount.toString() + "₪";
   itemsDiv.appendChild(amountDiv);
 
-
   let tImg = document.createElement("img");
   tImg.src = "/website/images/send-white-icon.png";
-  if (imRecipient == isTransfer) {
-    tImg.classList.add("transferImg");
+  if (transaction.Recipient.Id == userId == transaction.IsTransfer) {
+    tImg.classList.add("requestImg");
   }
   else {
-    tImg.classList.add("requestImg");
+    tImg.classList.add("transferImg");
   }
   amountDiv.appendChild(tImg);
 
   let statusDiv = document.createElement("div");
   statusDiv.classList.add("approvalButtons");
-  let status = "Approved";
-  if (transaction.Status == 2) {
+  let status = "";
+  if (transaction.Status == 1) {
+    status = "Approved";
+  }
+  else {
     status = "Rejected";
   }
   statusDiv.innerText = status;
