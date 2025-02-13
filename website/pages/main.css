@@ -48,19 +48,19 @@ img {
   background-color: #c21034;
 }
 
-.tImg {
+.requestImg {
   padding: 3px;
   height: 14px;
   transform: translateY(5px);
 }
 
-.rImg {
+.transferImg {
   padding: 3px;
   height: 14px;
   transform: translateY(5px) rotateZ(0.5turn);
 }
 
-.requestImg {
+.requestButtonImg {
   transform: rotateZ(0.5turn);
 }
 
