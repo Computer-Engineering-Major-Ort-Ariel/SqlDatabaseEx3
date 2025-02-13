@@ -80,9 +80,15 @@ class Program
           }
           else if (request.Path == "getContacts")
           {
+            var userId = request.GetBody<string>();
+            var contacts = database.Users.Where(user => user.Id != userId);
+            response.Send(contacts);
           }
           else if (request.Path == "transfer")
           {
+            var (senderId, recipientId, amount, reason) = request.GetBody<(string, string, double, string)>();
+            Transfer transfer = new Transfer(senderId, recipientId, amount, reason);
+            database.Transfers.Add(transfer);
           }
           else if (request.Path == "getInbox")
           {
