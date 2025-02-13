@@ -173,12 +173,7 @@ for (let i = 0; i < history.length; i++) {
   itemsDiv.appendChild(leftDiv);
 
   let nameDiv = document.createElement("div");
-  if (imRecipient) {
-    nameDiv.innerText = transaction.Sender.Username;
-  }
-  else {
-    nameDiv.innerText = transaction.Recipient.Username;
-  }
+  nameDiv.innerText = transaction.Sender.Username;
   leftDiv.appendChild(nameDiv);
 
   let reasonDiv = document.createElement("div");
