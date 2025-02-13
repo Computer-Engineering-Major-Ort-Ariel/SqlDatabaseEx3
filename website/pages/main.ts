@@ -57,7 +57,9 @@ for (let i = 0; i < modals.length; i++) {
       amount *= -1;
     }
 
-    await send("transfer", [userId, recipientId, amount, reason]);
+    let toMe = i == 1;
+
+    await send("transfer", [userId, recipientId, amount, reason, toMe]);
 
     modal.style.opacity = "0";
     modal.style.pointerEvents = "none";

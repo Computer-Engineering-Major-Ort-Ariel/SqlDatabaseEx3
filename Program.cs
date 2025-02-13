@@ -86,11 +86,11 @@ class Program
           }
           else if (request.Path == "transfer")
           {
-            var (senderId, recipientId, amount, reason) = request.GetBody<(string, string, double, string)>();
-            Transfer transfer = new Transfer(senderId, recipientId, amount, reason);
+            var (senderId, recipientId, amount, reason, toMe) = request.GetBody<(string, string, double, string, bool)>();
+            Transfer transfer = new Transfer(senderId, recipientId, amount, reason, toMe);
             database.Transfers.Add(transfer);
           }
-                    else if (request.Path == "getInbox")
+          else if (request.Path == "getInbox")
           {
             var userId = request.GetBody<string>();
             var inbox = database.Transfers
@@ -102,7 +102,7 @@ class Program
           {
             var userId = request.GetBody<string>();
             var history = database.Transfers
-              .Where(transfer => 
+              .Where(transfer =>
                 (transfer.RecipientId == userId || transfer.SenderId == userId)
                 && transfer.Status != 0
               )
@@ -153,7 +153,7 @@ class User(string id, string username, string password)
   public string Password { get; set; } = password;
 }
 
-class Transfer(string senderId, string recipientId, double amount, string reason)
+class Transfer(string senderId, string recipientId, double amount, string reason, bool toMe)
 {
   [Key] public int Id { get; set; } = default!;
   public string SenderId { get; set; } = senderId;
@@ -163,4 +163,5 @@ class Transfer(string senderId, string recipientId, double amount, string reason
   public double Amount { get; set; } = amount;
   public string Reason { get; set; } = reason;
   public int Status { get; set; } = 0;
+  public bool ToMe { get; set; } = toMe;
 }
