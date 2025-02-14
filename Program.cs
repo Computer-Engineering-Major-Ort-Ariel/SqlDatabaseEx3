@@ -111,15 +111,9 @@ class Program
           }
           else if (request.Path == "approve")
           {
-            var requestId = request.GetBody<int>();
-            var req = database.Transactions.Find(requestId)!;
-            req.Status = 1;
           }
           else if (request.Path == "reject")
           {
-            var requestId = request.GetBody<int>();
-            var req = database.Transactions.Find(requestId)!;
-            req.Status = 2;
           }
           else
           {
